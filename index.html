@@ -3,299 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Tabsheer | Data Science & Generative AI</title>
+    <title>Muhammad Tabsheer | Generative AI & Data Science Engineer</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --accent: #38bdf8;
-            --border: #334155;
+            --bg: #0b0f19;
+            --surface: #111827;
+            --surface-card: #1f293d;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.2);
+            --accent: #818cf8;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: #1f2937;
+            --border-highlight: #374151;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            padding: 20px;
-            max-width: 900px;
+            padding: 40px 20px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
+        /* Hero Header */
         header {
-            padding: 40px 0 20px 0;
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, var(--surface) 0%, #151d30 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
         }
 
         h1 {
-            font-size: 2.2rem;
-            color: var(--text-main);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-top: 5px;
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
         }
 
-        .links {
-            margin-top: 15px;
+        .bio {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            max-width: 750px;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
-        .links a {
-            color: var(--text-sub);
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
         }
 
-        .links a:hover {
-            color: var(--accent);
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            font-weight: 600;
         }
 
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border-highlight);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
         section {
-            margin: 35px 0;
+            margin-bottom: 45px;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            padding-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
+            background: var(--surface);
             border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.25s ease;
         }
 
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-main);
+        .card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.4);
         }
 
-        .card-sub {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin-bottom: 10px;
-        }
-
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
-            color: var(--text-sub);
-        }
-
-        li {
-            margin-bottom: 6px;
-        }
-
-        .skills-grid {
+        .card-header {
             display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .skill-tag {
-            background: var(--border);
-            color: var(--text-main);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
+        .card-tag {
+            font-size: 0.78rem;
+            background: var(--surface-card);
             color: var(--accent);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+        }
+
+        .card-sub {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        ul.points {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.points li {
+            position: relative;
+            padding-left: 20px;
+            color: #d1d5db;
+            font-size: 0.93rem;
+            margin-bottom: 8px;
+        }
+
+        ul.points li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Tech Pills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-chip {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-glow);
         }
 
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: var(--text-sub);
-            font-size: 0.85rem;
+            padding-top: 30px;
             border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="badge">
+            <span class="badge-dot"></span> Available for AI & ML Roles
+        </div>
         <h1>Muhammad Tabsheer</h1>
         <div class="subtitle">Data Science Undergraduate | Machine Learning & Generative AI</div>
-        <div class="links">
-            <a href="mailto:tabsheersiddiqui@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/muhammad-tabsheer-6a273a27a/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/M-Tabsheer3" target="_blank">GitHub</a>
-            <a href="https://instagram.com/muhammadtabsheer3" target="_blank">Instagram</a>
+        <p class="bio">
+            Passionate Data Science student specializing in building production-ready Generative AI systems, RAG pipelines, LLM agents, and scalable ML solutions[cite: 2]. Proven track record of shipping end-to-end applications with interactive UI/UX[cite: 2].
+        </p>
+        <div class="social-links">
+            <a href="mailto:tabsheersiddiqui@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.linkedin.com/in/muhammad-tabsheer-6a273a27a/" target="_blank" class="btn btn-outline">LinkedIn</a>
+            <a href="https://github.com/M-Tabsheer3" target="_blank" class="btn btn-outline">GitHub</a>
+            <a href="https://instagram.com/muhammadtabsheer3" target="_blank" class="btn btn-outline">Instagram</a>
         </div>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p style="color: var(--text-sub);">
-            Motivated Data Science undergraduate with hands-on project experience in Machine Learning and Generative AI, including RAG pipelines, LLM-powered agents, and end-to-end predictive systems[cite: 2]. Passionate about building intelligent tools that solve practical problems[cite: 2].
-        </p>
-    </section>
-
     <section id="projects">
-        <h2>Key Projects</h2>
-        
-        <div class="card">
-            <div class="card-title">SpendWise — AI Personal Finance Intelligence Platform</div>
-            <div class="card-sub">Tools: Python, Scikit-Learn, MySQL (Aiven Cloud), LangChain, Groq API (LLaMA 3.3 70B), Gradio</div>
-            <ul>
-                <li>Automated transaction categorization (TF-IDF + Random Forest) and unsupervised fraud detection (Isolation Forest)[cite: 2].</li>
-                <li>Designed a 3NF-normalized database and integrated an NL-to-SQL conversational agent[cite: 2].</li>
-                <li>Created an interactive 3-tab Gradio and Matplotlib analytics dashboard[cite: 2].</li>
-            </ul>
-        </div>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">SpendWise — AI Personal Finance Platform</div>
+                    <span class="card-tag">GenAI & ML</span>
+                </div>
+                <div class="card-sub">Python • Scikit-Learn • MySQL (Aiven Cloud) • LangChain • Groq API (LLaMA 3.3 70B) • Gradio</div>
+                <ul class="points">
+                    <li>Engineered an end-to-end financial system with TF-IDF + Random Forest classification and unsupervised fraud detection using Isolation Forest[cite: 2].</li>
+                    <li>Built an NL-to-SQL conversational agent allowing users to query 3NF-normalized financial databases using natural language[cite: 2].</li>
+                    <li>Designed an interactive 3-tab analytical dashboard using Gradio and Matplotlib[cite: 2].</li>
+                </ul>
+            </div>
 
-        <div class="card">
-            <div class="card-title">CardioRisk AI — Clinical Risk-Stratification Decision Support Tool</div>
-            <div class="card-sub">Tools: Python, Scikit-Learn, SHAP, FAISS, LangChain, Groq API, MySQL, Gradio</div>
-            <ul>
-                <li>Developed a Gradient Boosting classifier on UCI Heart Disease dataset with per-patient SHAP explainability[cite: 2].</li>
-                <li>Built a FAISS-based RAG pipeline grounded in WHO/CDC clinical guidelines for plain-language risk explanations[cite: 2].</li>
-            </ul>
-        </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">CardioRisk AI — Clinical Decision-Support System</div>
+                    <div class="card-sub">RAG Pipeline</div>
+                </div>
+                <div class="card-sub">Python • Scikit-Learn • SHAP • FAISS • LangChain • Groq API • MySQL • Gradio</div>
+                <ul class="points">
+                    <li>Trained a Gradient Boosting heart disease classifier featuring per-patient SHAP explainability[cite: 2].</li>
+                    <li>Implemented a FAISS vector search RAG pipeline grounded in official WHO/CDC clinical guidelines for plain-language risk explanations[cite: 2].</li>
+                </ul>
+            </div>
 
-        <div class="card">
-            <div class="card-title">Iris Flower Classification</div>
-            <div class="card-sub">Tools: Python, Scikit-learn, Pandas</div>
-            <ul>
-                <li>Compared K-Nearest Neighbors and Decision Tree models with exploratory data analysis and accuracy evaluation[cite: 2].</li>
-            </ul>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Iris Flower Classifier</div>
+                    <span class="card-tag">Machine Learning</span>
+                </div>
+                <div class="card-sub">Python • Scikit-Learn • Pandas • Matplotlib</div>
+                <ul class="points">
+                    <li>Evaluated KNN and Decision Tree classifiers with detailed exploratory data analysis and model performance comparisons[cite: 2].</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
     <section id="education">
-        <h2>Education</h2>
+        <h2 class="section-title">Education</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">BS in Data Science</div>
+                    <span class="card-tag">2025 – 2029</span>
+                </div>
+                <div class="card-sub">Dawood University of Engineering & Technology (DUET)</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Currently in 3rd Semester (2nd Year)[cite: 2].</p>
+            </div>
 
-        <div class="card">
-            <div class="card-title">BS in Data Science</div>
-            <div class="card-sub">Dawood University of Engineering & Technology (DUET) | 2025 – 2029 (Expected)</div>
-            <p style="color: var(--text-sub); font-size: 0.9rem;">Currently in 3rd Semester (2nd Year)[cite: 2].</p>
-        </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Undergraduate Diploma in Data Science</div>
+                    <span class="card-tag">2025 – 2026</span>
+                </div>
+                <div class="card-sub">NED University of Engineering & Technology</div>
+            </div>
 
-        <div class="card">
-            <div class="card-title">Undergraduate Diploma in Data Science</div>
-            <div class="card-sub">NED University of Engineering & Technology | Nov 2025 – Nov 2026 (Expected)</div>
-        </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Intermediate (H.S.C) — Science General</div>
+                    <span class="card-tag">Completed 2025</span>
+                </div>
+                <div class="card-sub">Sirajuddaulah Govt. Degree College (BIEK)</div>
+            </div>
 
-        <div class="card">
-            <div class="card-title">Intermediate — Science General (H.S.C)</div>
-            <div class="card-sub">Sirajuddaulah Govt. Degree College (BIEK) | 2025</div>
-            <table>
-                <tr>
-                    <th>Class</th>
-                    <th>Obtained / Total Marks</th>
-                    <th>Percentage</th>
-                    <th>Grade</th>
-                </tr>
-                <tr>
-                    <td>1st Year (Part-I)</td>
-                    <td>403 / 550</td>
-                    <td>73.27%</td>
-                    <td>Pass</td>
-                </tr>
-                <tr>
-                    <td>2nd Year (Combined)</td>
-                    <td>765 / 1100</td>
-                    <td>69.55%</td>
-                    <td>A</td>
-                </tr>
-            </table>
-        </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Matriculation (S.S.C) — Science Group</div>
+                    <span class="card-tag">Completed 2023</span>
+                </div>
+                <div class="card-sub">Oxford Grammar Secondary School (BSEK)</div>
+            </div>
 
-        <div class="card">
-            <div class="card-title">Matriculation — Science Group (S.S.C)</div>
-            <div class="card-sub">Oxford Grammar Secondary School (BSEK) | 2023</div>
-            <table>
-                <tr>
-                    <th>Obtained / Total Marks</th>
-                    <th>Percentage</th>
-                    <th>Grade</th>
-                </tr>
-                <tr>
-                    <td>829 / 1100</td>
-                    <td>75.36%</td>
-                    <td>A</td>
-                </tr>
-            </table>
         </div>
     </section>
 
     <section id="certifications">
-        <h2>Certifications</h2>
-        
-        <div class="card">
-            <div class="card-title">Google AI Professional Certificate</div>
-            <div class="card-sub">Google & Coursera | Completed August 2026</div>
-            <p style="color: var(--text-sub); font-size: 0.9rem;">
-                Completed 7-course specialization covering AI Fundamentals, Brainstorming, Research, Writing, Content Creation, Data Analysis, and App Building[cite: 1, 2].
-            </p>
-        </div>
+        <h2 class="section-title">Certifications</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Google AI Professional Certificate</div>
+                    <span class="card-tag">Google | Coursera</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">
+                    Comprehensive 7-course specialization in AI Fundamentals, Research, Prompt Engineering, Data Analysis, Content Creation, and Custom App Building[cite: 1, 2].
+                </p>
+            </div>
 
-        <div class="card">
-            <div class="card-title">Deloitte Data Analytics Job Simulation</div>
-            <div class="card-sub">Deloitte & Forage | Completed July 2026</div>
-            <p style="color: var(--text-sub); font-size: 0.9rem;">
-                Completed practical simulated tasks in Data Analysis and Forensic Technology[cite: 2, 3].
-            </p>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Deloitte Data Analytics Job Simulation</div>
+                    <span class="card-tag">Deloitte | Forage</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">
+                    Practical simulation completing business-focused tasks in Data Analytics and Forensic Technology[cite: 2, 3].
+                </p>
+            </div>
+
         </div>
     </section>
 
     <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">LangChain</span>
-            <span class="skill-tag">RAG Pipelines</span>
-            <span class="skill-tag">FAISS</span>
-            <span class="skill-tag">Groq API (LLaMA)</span>
-            <span class="skill-tag">Scikit-Learn</span>
-            <span class="skill-tag">SHAP</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Aiven Cloud</span>
-            <span class="skill-tag">Gradio</span>
-            <span class="skill-tag">Git & GitHub</span>
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-chip">Python</div>
+            <div class="skill-chip">SQL</div>
+            <div class="skill-chip">Java</div>
+            <div class="skill-chip">LangChain</div>
+            <div class="skill-chip">RAG Architecture</div>
+            <div class="skill-chip">FAISS</div>
+            <div class="skill-chip">Groq API (LLaMA 3.3)</div>
+            <div class="skill-chip">Scikit-Learn</div>
+            <div class="skill-chip">SHAP Explainability</div>
+            <div class="skill-chip">MySQL / Aiven Cloud</div>
+            <div class="skill-chip">Gradio UI</div>
+            <div class="skill-chip">Git & GitHub</div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Muhammad Tabsheer. Built for GitHub Pages.
+        &copy; 2026 Muhammad Tabsheer • Designed for GitHub Pages
     </footer>
 
 </body>
